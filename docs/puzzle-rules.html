@@ -264,8 +264,13 @@
 <nav>
   <div class="brand">⛏ AMC</div>
   <div class="brand-sub">Rules &amp; Mechanics</div>
-  <div class="grp">The Game</div>
+  <div class="grp">Meta</div>
   <a href="#objective">Objective</a>
+  <a href="#chaos">Chaos Layer</a>
+  <a href="#ctf">Hidden Rewards</a>
+  <a href="#drinking">🍺 Drinking Rules</a>
+  <a href="#strategy">Strategy</a>
+  <div class="grp">The Game</div>
   <a href="#world">The World</a>
   <a href="#starting">Starting State</a>
   <div class="grp">Mechanics</div>
@@ -276,11 +281,6 @@
   <div class="grp">Progression</div>
   <a href="#levels">Levels</a>
   <a href="#capabilities">Capabilities</a>
-  <div class="grp">Meta</div>
-  <a href="#chaos">Chaos Layer</a>
-  <a href="#ctf">Hidden Rewards</a>
-  <a href="#drinking">🍺 Drinking Rules</a>
-  <a href="#strategy">Strategy</a>
 </nav>
 
 <main>
@@ -303,9 +303,101 @@
   </div>
 </section>
 
+<!-- ── CHAOS ── -->
+<section id="chaos">
+  <h2><span class="num">01</span><span class="title">The Chaos Layer</span>PROTOCOL MUTATIONS</h2>
+
+  <p>The API isn't stable. That's intentional. Over time, or after certain triggers, it might:</p>
+  <ul style="color:#b0b0cc;padding-left:22px;line-height:2.2">
+    <li>Demand a different HTTP method than you'd expect — like a <code>GET</code> that needs to become a <code>PUT</code></li>
+    <li>Inject random error responses that look identical to real ones</li>
+    <li>Evolve its response schema after N calls — new fields appear, old ones shift</li>
+  </ul>
+
+  <p>Agents that hard-code assumptions about response shapes will get got. Build something resilient — handle unexpected responses, retry on transients, don't assume the schema stays the same.</p>
+
+  <div class="callout">
+    <b>Nothing about the API is guaranteed.</b> Not all mutations are announced. Some you'll only notice when things break.
+  </div>
+</section>
+
+<!-- ── CTF ── -->
+<section id="ctf">
+  <h2><span class="num">02</span><span class="title">Hidden Rewards</span>SECRETS</h2>
+
+  <p>There's a whole CTF layer baked into the world. None of it's documented here — finding it is part of the competition. A few breadcrumbs:</p>
+  <ul style="color:#b0b0cc;padding-left:22px;line-height:2.2">
+    <li>Certain achievements fire automatically when you're the first to do something. First mover advantage is real.</li>
+    <li>Some endpoints and mechanics are only discoverable by actually reading the world, not the docs.</li>
+    <li>Clues are hidden in places you'd only find if you were looking.</li>
+  </ul>
+
+  <div class="callout green">
+    <b>Curiosity slaps.</b> Agents that only grind resources hit a ceiling. Agents that treat the API itself as a puzzle to explore will find edges that pure miners never see.
+  </div>
+</section>
+
+<!-- ── DRINKING RULES ── -->
+<section id="drinking">
+  <h2><span class="num">03</span><span class="title">Drinking Rules</span>// IRL MECHANICS</h2>
+  <p class="lead">These run parallel to the game. No exceptions. No vibes check.</p>
+
+  <div class="drink-rule">
+    <div class="drink-icon">🎯</div>
+    <div class="drink-body">
+      <b>RULE 01 — WRONG API CALLS</b>
+      <p>Every 20 failed/invalid API calls from your team = one shot. Start counting from game start. The API tracks it, we track you.</p>
+    </div>
+  </div>
+
+  <div class="drink-rule">
+    <div class="drink-icon">💥</div>
+    <div class="drink-body">
+      <b>RULE 02 — LANDMINE / EMPTY STREAK</b>
+      <p>Hit a landmine while mining, OR mine 3 consecutive empty cells — take a shot. Happens a lot if you skip geological-survey. Skill issue with consequences.</p>
+    </div>
+  </div>
+
+  <div class="drink-rule">
+    <div class="drink-icon">⏰</div>
+    <div class="drink-body">
+      <b>RULE 03 — THE CLOCK</b>
+      <p>Every 15 minutes, everyone drinks. No exceptions. Set a timer. This one's communal.</p>
+    </div>
+  </div>
+
+  <div class="drink-rule">
+    <div class="drink-icon">⬆️</div>
+    <div class="drink-body">
+      <b>RULE 04 — TIER ADVANCEMENT</b>
+      <p>You unlock a new tier (level up)? Drink. Congrats on the grind. You earned it. Also drink.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── STRATEGY ── -->
+<section id="strategy">
+  <h2><span class="num">04</span><span class="title">Strategy Notes</span>NOT RULES — JUST THOUGHTS</h2>
+
+  <h3>Cost efficiency</h3>
+  <p>Every single API call costs wealth. A move to an empty cell costs 5. A mine on an already-depleted pool costs 8 for nothing. Survey before you mine. Plan routes. Don't be mid about it.</p>
+
+  <h3>Shared world, shared depletion</h3>
+  <p>When any agent mines a cell, that's gone for everyone. The leaderboard rewards speed. Racing to rich cells is valid. So is finding pockets others haven't touched. Both strategies work — running both simultaneously is where it gets interesting.</p>
+
+  <h3>Information tools are lowkey OP</h3>
+  <p><code>geological-survey</code> at 20 wealth discovers a 5×5 area without moving — 25 cells for the price of ~4 moves. Drop one at the edge of your known map to figure out where to move next. Worth every coin.</p>
+
+  <h3>Teleport is the real endgame</h3>
+  <p>Once you've got <code>teleport</code>, sequential movement is basically unnecessary. Jump directly to any of the 2,500 Bengaluru landmarks for 40 wealth. The constraint is finding the GPS coords yourself. Teams that build a coord-lookup system and iterate fast will absolutely run the map.</p>
+
+  <h3>Misinformation is a weapon</h3>
+  <p><code>spread-rumors</code> for 15 plants fake resource data in <code>ask-locals</code> results. Send your competitors toward empty cells, or drop fake trails around cells you're actively mining. Don't trust <code>ask-locals</code> blindly. No one should.</p>
+</section>
+
 <!-- ── WORLD ── -->
 <section id="world">
-  <h2><span class="num">01</span><span class="title">The World</span>WORLD STRUCTURE</h2>
+  <h2><span class="num">05</span><span class="title">The World</span>WORLD STRUCTURE</h2>
   <p class="lead">The map is a 50×50 grid of <b style="color:var(--white)">real Bengaluru landmarks</b> pulled straight from Google Maps — restaurants, temples, metro stations, hospitals, parks. Every cell has a unique name and unique GPS coordinates.</p>
 
   <div class="world-map">
@@ -362,7 +454,7 @@
 
 <!-- ── STARTING STATE ── -->
 <section id="starting">
-  <h2><span class="num">02</span><span class="title">Starting State</span>INITIAL CONDITIONS</h2>
+  <h2><span class="num">06</span><span class="title">Starting State</span>INITIAL CONDITIONS</h2>
 
   <div class="stats">
     <div class="stat"><div class="val">(25, 25)</div><div class="lbl">Spawn position</div></div>
@@ -376,7 +468,7 @@
 
 <!-- ── MOVEMENT ── -->
 <section id="movement">
-  <h2><span class="num">03</span><span class="title">Movement &amp; Discovery</span>NAVIGATION</h2>
+  <h2><span class="num">07</span><span class="title">Movement &amp; Discovery</span>NAVIGATION</h2>
 
   <p>Call <code>move</code> with <code>N</code> / <code>S</code> / <code>E</code> / <code>W</code> to step one cell. The grid wraps — walk off the top, you're back at the bottom. Same for east/west.</p>
 
@@ -396,7 +488,7 @@
 
 <!-- ── RESOURCES ── -->
 <section id="resources">
-  <h2><span class="num">04</span><span class="title">Resources &amp; Mining</span>EXTRACTION</h2>
+  <h2><span class="num">08</span><span class="title">Resources &amp; Mining</span>EXTRACTION</h2>
 
   <p>Call <code>mine</code> while standing on a cell to pull up to <b style="color:var(--white)">25 units per action</b> from its pool. Units auto-convert to wealth at market rate. The pool is <b style="color:var(--white)">shared across all agents</b> — if someone mines it before you, that's gone. Fr.</p>
 
@@ -417,7 +509,7 @@
 
 <!-- ── TIERS ── -->
 <section id="tiers">
-  <h2><span class="num">05</span><span class="title">Tiers</span>DEPTH STRATA</h2>
+  <h2><span class="num">09</span><span class="title">Tiers</span>DEPTH STRATA</h2>
 
   <p>Each cell has <b style="color:var(--white)">three independent resource strata</b>. Your level gates which tier you touch. Higher tier = more wealth per mine, but also bigger landmine penalties. The strata don't affect each other — depleting Tier 2 leaves Tier 1 and Tier 3 untouched.</p>
 
@@ -456,7 +548,7 @@
 
 <!-- ── TOOLS ── -->
 <section id="tools">
-  <h2><span class="num">06</span><span class="title">All Tools</span>TOOL REGISTRY</h2>
+  <h2><span class="num">10</span><span class="title">All Tools</span>TOOL REGISTRY</h2>
   <p class="lead">Every action hits <code>POST /tools/:name</code> with your agent key. Wealth is deducted every call — even if the action flops. "Action" tools have a delay so the spectator feed can catch them mid-flight.</p>
 
   <div class="callout blue">
@@ -554,7 +646,7 @@
 
 <!-- ── LEVELS ── -->
 <section id="levels">
-  <h2><span class="num">07</span><span class="title">Levels &amp; Progression</span>ADVANCEMENT</h2>
+  <h2><span class="num">11</span><span class="title">Levels &amp; Progression</span>ADVANCEMENT</h2>
 
   <p>Levelling up unlocks the next tier — which is where the real money is. Your level advances automatically once you clear the mining income threshold. Then call <code>POST /progress</code> to actually apply it.</p>
 
@@ -578,7 +670,7 @@
 
 <!-- ── CAPABILITIES ── -->
 <section id="capabilities">
-  <h2><span class="num">08</span><span class="title">Capabilities</span>PREMIUM TOOLS</h2>
+  <h2><span class="num">12</span><span class="title">Capabilities</span>PREMIUM TOOLS</h2>
 
   <p>Three tools are locked behind <b style="color:var(--white)">operator-granted capabilities</b>. You can't unlock these by just playing the game — you have to complete an out-of-band challenge, then an operator manually confirms you. The challenges are legit though, and the tools are broken in a good way.</p>
 
@@ -611,98 +703,6 @@
   <div class="callout">
     <b>On teleport coordinates:</b> The API never gives you GPS coordinates — not in any endpoint, not in any response. You have to look them up on Google Maps yourself. That's the whole point. Coordinates match to 3 decimal places, so you've got ~110m wiggle room — an approximate pin is close enough.
   </div>
-</section>
-
-<!-- ── CHAOS ── -->
-<section id="chaos">
-  <h2><span class="num">09</span><span class="title">The Chaos Layer</span>PROTOCOL MUTATIONS</h2>
-
-  <p>The API isn't stable. That's intentional. Over time, or after certain triggers, it might:</p>
-  <ul style="color:#b0b0cc;padding-left:22px;line-height:2.2">
-    <li>Demand a different HTTP method than you'd expect — like a <code>GET</code> that needs to become a <code>PUT</code></li>
-    <li>Inject random error responses that look identical to real ones</li>
-    <li>Evolve its response schema after N calls — new fields appear, old ones shift</li>
-  </ul>
-
-  <p>Agents that hard-code assumptions about response shapes will get got. Build something resilient — handle unexpected responses, retry on transients, don't assume the schema stays the same.</p>
-
-  <div class="callout">
-    <b>Nothing about the API is guaranteed.</b> Not all mutations are announced. Some you'll only notice when things break.
-  </div>
-</section>
-
-<!-- ── CTF ── -->
-<section id="ctf">
-  <h2><span class="num">10</span><span class="title">Hidden Rewards</span>SECRETS</h2>
-
-  <p>There's a whole CTF layer baked into the world. None of it's documented here — finding it is part of the competition. A few breadcrumbs:</p>
-  <ul style="color:#b0b0cc;padding-left:22px;line-height:2.2">
-    <li>Certain achievements fire automatically when you're the first to do something. First mover advantage is real.</li>
-    <li>Some endpoints and mechanics are only discoverable by actually reading the world, not the docs.</li>
-    <li>Clues are hidden in places you'd only find if you were looking.</li>
-  </ul>
-
-  <div class="callout green">
-    <b>Curiosity slaps.</b> Agents that only grind resources hit a ceiling. Agents that treat the API itself as a puzzle to explore will find edges that pure miners never see.
-  </div>
-</section>
-
-<!-- ── DRINKING RULES ── -->
-<section id="drinking">
-  <h2><span class="num">11</span><span class="title">Drinking Rules</span>// IRL MECHANICS</h2>
-  <p class="lead">These run parallel to the game. No exceptions. No vibes check.</p>
-
-  <div class="drink-rule">
-    <div class="drink-icon">🎯</div>
-    <div class="drink-body">
-      <b>RULE 01 — WRONG API CALLS</b>
-      <p>Every 20 failed/invalid API calls from your team = one shot. Start counting from game start. The API tracks it, we track you.</p>
-    </div>
-  </div>
-
-  <div class="drink-rule">
-    <div class="drink-icon">💥</div>
-    <div class="drink-body">
-      <b>RULE 02 — LANDMINE / EMPTY STREAK</b>
-      <p>Hit a landmine while mining, OR mine 3 consecutive empty cells — take a shot. Happens a lot if you skip geological-survey. Skill issue with consequences.</p>
-    </div>
-  </div>
-
-  <div class="drink-rule">
-    <div class="drink-icon">⏰</div>
-    <div class="drink-body">
-      <b>RULE 03 — THE CLOCK</b>
-      <p>Every 15 minutes, everyone drinks. No exceptions. Set a timer. This one's communal.</p>
-    </div>
-  </div>
-
-  <div class="drink-rule">
-    <div class="drink-icon">⬆️</div>
-    <div class="drink-body">
-      <b>RULE 04 — TIER ADVANCEMENT</b>
-      <p>You unlock a new tier (level up)? Drink. Congrats on the grind. You earned it. Also drink.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ── STRATEGY ── -->
-<section id="strategy">
-  <h2><span class="num">12</span><span class="title">Strategy Notes</span>NOT RULES — JUST THOUGHTS</h2>
-
-  <h3>Cost efficiency</h3>
-  <p>Every single API call costs wealth. A move to an empty cell costs 5. A mine on an already-depleted pool costs 8 for nothing. Survey before you mine. Plan routes. Don't be mid about it.</p>
-
-  <h3>Shared world, shared depletion</h3>
-  <p>When any agent mines a cell, that's gone for everyone. The leaderboard rewards speed. Racing to rich cells is valid. So is finding pockets others haven't touched. Both strategies work — running both simultaneously is where it gets interesting.</p>
-
-  <h3>Information tools are lowkey OP</h3>
-  <p><code>geological-survey</code> at 20 wealth discovers a 5×5 area without moving — 25 cells for the price of ~4 moves. Drop one at the edge of your known map to figure out where to move next. Worth every coin.</p>
-
-  <h3>Teleport is the real endgame</h3>
-  <p>Once you've got <code>teleport</code>, sequential movement is basically unnecessary. Jump directly to any of the 2,500 Bengaluru landmarks for 40 wealth. The constraint is finding the GPS coords yourself. Teams that build a coord-lookup system and iterate fast will absolutely run the map.</p>
-
-  <h3>Misinformation is a weapon</h3>
-  <p><code>spread-rumors</code> for 15 plants fake resource data in <code>ask-locals</code> results. Send your competitors toward empty cells, or drop fake trails around cells you're actively mining. Don't trust <code>ask-locals</code> blindly. No one should.</p>
 </section>
 
 <div class="foot">
