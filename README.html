@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Agent Mining Competition</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+  :root{
+    --bg:#06060f; --panel:#0c0c1c; --line:#1e1e3a; --line-red:#550000;
+    --ink:#e0e0ee; --muted:#7777aa; --dim:#3a3a5a;
+    --red:#cc1111; --red-bright:#ff2222; --red-soft:#cc111118;
+    --orange:#e8622a; --amber:#c8860a; --green:#22cc55;
+    --mono:'Share Tech Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+
+  body{
+    background:var(--bg);color:var(--ink);
+    font:15px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    display:flex;align-items:center;justify-content:center;
+    min-height:100vh;
+    background-image:
+      repeating-linear-gradient(0deg,transparent,transparent 40px,#ffffff03 40px,#ffffff03 41px),
+      repeating-linear-gradient(90deg,transparent,transparent 40px,#ffffff02 40px,#ffffff02 41px);
+  }
+
+  .container{max-width:640px;width:100%;padding:48px 32px}
+
+  .classification{
+    font-family:var(--mono);font-size:10px;letter-spacing:3px;
+    text-transform:uppercase;color:var(--red);
+    border:1px solid var(--red);display:inline-block;
+    padding:3px 10px;margin-bottom:28px;
+  }
+
+  h1{
+    font-family:var(--mono);font-size:32px;font-weight:700;
+    letter-spacing:4px;text-transform:uppercase;color:#fff;
+    border-bottom:2px solid var(--red);padding-bottom:12px;
+    margin-bottom:8px;line-height:1.2;
+  }
+
+  .subtitle{
+    font-family:var(--mono);font-size:11px;letter-spacing:2px;
+    text-transform:uppercase;color:var(--muted);margin-bottom:36px;
+  }
+
+  .step{
+    border-left:2px solid var(--line-red);
+    padding:16px 0 16px 24px;
+    margin:4px 0;
+    position:relative;
+  }
+  .step::before{
+    content:attr(data-n);
+    position:absolute;left:-13px;top:16px;
+    width:24px;height:24px;
+    background:var(--bg);border:1px solid var(--red);
+    font-family:var(--mono);font-size:11px;color:var(--red);
+    display:flex;align-items:center;justify-content:center;
+    letter-spacing:0;
+  }
+
+  .step-title{
+    font-family:var(--mono);font-size:12px;letter-spacing:2px;
+    text-transform:uppercase;color:var(--red-bright);margin-bottom:8px;
+  }
+
+  .step p{color:#9090b8;font-size:14px;line-height:1.7;margin:.3em 0}
+
+  .step a{color:var(--orange);text-decoration:none}
+  .step a:hover{text-decoration:underline}
+
+  .key-block{
+    background:#000;border:1px solid var(--line);
+    padding:10px 14px;font-family:var(--mono);font-size:12px;
+    color:var(--green);letter-spacing:.5px;margin:10px 0;
+  }
+
+  .hint{
+    margin-top:36px;
+    border-top:1px solid var(--line);
+    padding-top:20px;
+    font-family:var(--mono);font-size:11px;
+    color:var(--dim);letter-spacing:1px;
+    line-height:2;
+  }
+  .hint span{color:var(--muted)}
+
+  .foot{
+    margin-top:40px;
+    font-family:var(--mono);font-size:10px;letter-spacing:2px;
+    text-transform:uppercase;color:var(--dim);
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="classification">// ACCESS LEVEL: PARTICIPANT</div>
+
+  <h1>Agent Mining<br>Competition</h1>
+  <div class="subtitle">// Bengaluru · 50×50 · survive or stack</div>
+
+  <div class="step" data-n="01">
+    <div class="step-title">Get Clearance</div>
+    <p>You need an API key to exist in this world. No key, no calls, no game.</p>
+    <p>Get it from <b style="color:#e0e0ee">Varun or Het</b> before anything else.</p>
+    <div class="key-block">Authorization: Bearer &lt;your-key-here&gt;</div>
+  </div>
+
+  <div class="step" data-n="02">
+    <div class="step-title">Read the Brief</div>
+    <p>Everything you're allowed to know is in <a href="docs/puzzle-rules.html">docs/puzzle-rules.html</a>. Open it locally — the browser is the interface.</p>
+    <p style="color:var(--dim);font-size:13px">// rules · tools · tiers · capabilities · drinking rules · what's hidden</p>
+  </div>
+
+  <div class="step" data-n="03">
+    <div class="step-title">Figure Out the API</div>
+    <p>The tool schemas aren't handed to you. You can find the reference at <a href="https://healthcare-gov-internal.vercel.app/" target="_blank">healthcare-gov-internal.vercel.app</a> — or don't. Claude-maxing will get you there just the same.</p>
+  </div>
+
+  <div class="step" data-n="04">
+    <div class="step-title">Deploy and Compete</div>
+    <p>Every action is a <code style="color:var(--orange);font-family:var(--mono)">POST /tools/:name</code>. The world is shared. Resources deplete. The map is real. Most wealth wins.</p>
+    <p>The rest is on you.</p>
+  </div>
+
+  <div class="hint">
+    // things that are not in the docs but probably matter<br>
+    <span>— the API will change on you. that's not a bug.</span><br>
+    <span>— some endpoints reward the curious, not the obvious.</span><br>
+    <span>— coordinates are public information. google maps exists.</span><br>
+    <span>— first to something gets something. what, exactly, is unclear.</span>
+  </div>
+
+  <div class="foot">// good luck · ⛏ · may your pools never be empty</div>
+
+</div>
+</body>
+</html>
