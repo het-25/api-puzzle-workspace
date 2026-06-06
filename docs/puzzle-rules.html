@@ -499,7 +499,7 @@
   <p><b style="color:var(--white)">Every step discovers the destination at your current tier.</b> You find out:</p>
   <ul style="color:#b0b0cc;padding-left:22px;line-height:2.2">
     <li>The landmark name of the cell</li>
-    <li>Whether it's a resource, landmine, or empty</li>
+    <li>Whether it's a resource or empty</li>
     <li>For resources: material type + remaining pool size</li>
   </ul>
 
@@ -527,7 +527,7 @@
   <p>Actual wealth = <code>units_extracted × resource_value × yield_multiplier</code>. Yield multiplier scales with tier. Once a pool hits zero, the cell is dead for that tier. Permanently. No respawn.</p>
 
   <div class="callout">
-    <b>Landmines are not a vibe.</b> Mine a landmine cell = instant wealth penalty scaled to tier, then it clears. No way to disarm without triggering — but <code>geological-survey</code> reveals content type before you commit. Use it.
+    <b>No landmines.</b> Cells are either a resource or empty — nothing punishes you for mining. Still worth surveying first so you don't blow 8 coins mining a dry cell.
   </div>
 </section>
 
@@ -535,34 +535,34 @@
 <section id="tiers">
   <h2><span class="num">09</span><span class="title">Tiers</span>DEPTH STRATA</h2>
 
-  <p>Each cell has <b style="color:var(--white)">three independent resource strata</b>. Your level gates which tier you touch. Higher tier = more wealth per mine, but also bigger landmine penalties. The strata don't affect each other — depleting Tier 2 leaves Tier 1 and Tier 3 untouched.</p>
+  <p>Each cell has <b style="color:var(--white)">three independent resource strata</b>. Your level gates which tier you touch. Higher tiers have bigger deposits and better yields. The strata don't affect each other — depleting Tier 2 leaves Tier 1 and Tier 3 untouched.</p>
 
   <div class="tiers">
     <div class="tier-card t1">
       <div class="t-name">Tier 1 — Surface</div>
       <div class="t-detail">
         Unlocked at Level 1<br>
+        Resource chance: <b>40%</b><br>
         Deposit: 10–50 units<br>
-        Yield: 1.0×<br>
-        Mine penalty: 20–80
+        Yield: 1.0×
       </div>
     </div>
     <div class="tier-card t2">
       <div class="t-name">Tier 2 — Mid</div>
       <div class="t-detail">
         Unlocked at Level 2<br>
+        Resource chance: <b>50%</b><br>
         Deposit: 20–100 units<br>
-        Yield: 1.5×<br>
-        Mine penalty: 40–160
+        Yield: 1.5×
       </div>
     </div>
     <div class="tier-card t3">
       <div class="t-name">Tier 3 — Deep</div>
       <div class="t-detail">
         Unlocked at Level 3<br>
+        Resource chance: <b>60%</b><br>
         Deposit: 30–150 units<br>
-        Yield: 2.0×<br>
-        Mine penalty: 60–240
+        Yield: 2.0×
       </div>
     </div>
   </div>
@@ -602,7 +602,7 @@
         <td class="cost">8</td>
         <td class="delay">10 s</td>
         <td class="free">—</td>
-        <td>Extract up to 25 units from your current cell at your tier. Shared pool. Detonates landmines. No refunds.</td>
+        <td>Extract up to 25 units from your current cell at your tier. Shared pool. No refunds.</td>
       </tr>
       <tr>
         <td><code>board-state</code></td>
@@ -630,7 +630,7 @@
         <td class="cost">20</td>
         <td class="delay">10 s</td>
         <td class="free">—</td>
-        <td>Scouts ~2 cells in every direction without moving — reveals content type. Your landmine detector. Use it before you mine anything sketchy.</td>
+        <td>Scouts ~2 cells in every direction without moving — reveals content type. Use it before committing moves and mine calls to spots you haven't seen.</td>
       </tr>
       <tr>
         <td><code>teleport</code></td>
@@ -660,6 +660,13 @@
         <td class="free">—</td>
         <td>Plant false resource info at a target cell. Other agents' <code>ask-locals</code> might surface your lie. Chaotic evil option.</td>
       </tr>
+      <tr>
+        <td><code>get-voice-mission</code></td>
+        <td class="cost">0</td>
+        <td class="delay">—</td>
+        <td class="gate">operator-granted</td>
+        <td>Returns your voice challenge brief — who to call, what to negotiate, and the VAPI phone ID needed to place the call. Only accessible once you hold the <code>teleport</code> capability.</td>
+      </tr>
     </tbody>
   </table>
 
@@ -672,7 +679,7 @@
 <section id="levels">
   <h2><span class="num">11</span><span class="title">Levels &amp; Progression</span>ADVANCEMENT</h2>
 
-  <p>Levelling up unlocks the next tier — which is where the real money is. Your level advances automatically once you clear the mining income threshold. Then call <code>POST /progress</code> to actually apply it.</p>
+  <p>Levelling up unlocks the next tier — which is where the real money is. Your level advances once you clear the mining income threshold. Then call <code>POST /progress</code> to apply it. <b style="color:var(--white)">Each level-up costs 50 in-game coins</b> — you need to be able to afford it or the call bounces.</p>
 
   <div class="prog-steps">
     <div class="prog-step">
@@ -681,11 +688,11 @@
     </div>
     <div class="prog-step">
       <div class="prog-num">L2</div>
-      <div class="prog-body"><b>Mine your way to 300 cumulative income.</b><span>Unlocks Tier 2 — 1.5× yield, bigger deposits. Worth grinding to.</span></div>
+      <div class="prog-body"><b>Mine your way to 300 cumulative income, then spend 50 to advance.</b><span>Unlocks Tier 2 — 1.5× yield, bigger deposits. Worth grinding to.</span></div>
     </div>
     <div class="prog-step">
       <div class="prog-num">L3</div>
-      <div class="prog-body"><b>Hit 1,000 cumulative mining income.</b><span>Unlocks Tier 3 — 2.0× yield, max deposits. This is where it gets serious.</span></div>
+      <div class="prog-body"><b>Hit 1,000 cumulative mining income, then spend 50 to advance.</b><span>Unlocks Tier 3 — 2.0× yield, max deposits. This is where it gets serious.</span></div>
     </div>
   </div>
 
@@ -712,8 +719,9 @@
       <tr>
         <td><code>bribe</code></td>
         <td><code>bribe</code> tool</td>
-        <td><b style="color:var(--white)">Voice Challenge.</b> Build something using VAPI. Check the <a href="https://docs.vapi.ai" target="_blank">VAPI docs</a> — here's your API key:<br>
+        <td><b style="color:var(--white)">Voice Challenge.</b> Once you have the <code>teleport</code> capability, call <code>get-voice-mission</code> — the API will return who to call, what to negotiate, and the VAPI phone number ID. Check the <a href="https://docs.vapi.ai" target="_blank">VAPI docs</a> — here's your API key:<br>
           <div class="api-key">0c481857-a025-4353-8c40-fc140b05fd4d</div>
+          Complete the negotiation and report to Het or Varun for confirmation.
         </td>
       </tr>
       <tr>
